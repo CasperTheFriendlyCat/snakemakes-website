@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Color swatch pickers — rendered from the shared FILAMENT_COLORS palette
   // (js/filament-colors.js) so every page stays in sync with one color list.
+  // regionPickers tracks each picker's swatch container + current selection so
+  // paired regions (e.g. primary/secondary) can stop the same color being picked twice.
+  const regionPickers = {};
+
   document.querySelectorAll(".swatch-picker").forEach((picker) => {
     const palette = FILAMENT_COLORS[picker.dataset.palette] || [];
     const region = picker.dataset.region || "color";
@@ -9,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const label = document.querySelector(".selected-" + region);
     const container = picker.querySelector(".swatches");
     if (!container) return;
+
+    const info = { container, selectedName: defaultName };
+    regionPickers[region] = info;
 
     palette.forEach((color) => {
       const btn = document.createElement("button");
@@ -35,11 +42,43 @@ document.addEventListener("DOMContentLoaded", () => {
         if (label) label.textContent = color.name;
         container.querySelectorAll(".swatch").forEach((b) => b.classList.remove("selected"));
         btn.classList.add("selected");
+        info.selectedName = color.name;
         updateSelectionSummary();
+        syncPairedPickers(region);
       });
 
       container.appendChild(btn);
     });
+  });
+
+  // Linked regions can't share the same color (e.g. a two-tone product where
+  // primary and secondary would otherwise look identical/invisible against each other).
+  const pairedRegions = [["primary", "secondary"]];
+
+  function syncPairedPickers(changedRegion) {
+    const pair = pairedRegions.find((p) => p.includes(changedRegion));
+    if (!pair) return;
+    const otherRegion = pair.find((r) => r !== changedRegion);
+    disableMatchingSwatch(changedRegion, otherRegion);
+    disableMatchingSwatch(otherRegion, changedRegion);
+  }
+
+  function disableMatchingSwatch(sourceRegion, targetRegion) {
+    const source = regionPickers[sourceRegion];
+    const target = regionPickers[targetRegion];
+    if (!source || !target) return;
+    target.container.querySelectorAll(".swatch").forEach((btn) => {
+      const clash = btn.dataset.name === source.selectedName;
+      btn.disabled = clash;
+      btn.title = clash ? "Already selected as the other colour" : "";
+    });
+  }
+
+  pairedRegions.forEach(([a, b]) => {
+    if (regionPickers[a] && regionPickers[b]) {
+      disableMatchingSwatch(a, b);
+      disableMatchingSwatch(b, a);
+    }
   });
 
   // Dropdown option selectors (pack size, thickness, height) with a live summary line

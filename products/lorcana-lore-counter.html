@@ -58,8 +58,18 @@
       <div>
         <div class="color-configurator">
           <div class="configurator-preview photo-stack">
-            <div class="mask-layer region-primary" style="background-color:#8bc53f; -webkit-mask-image:url('../images/lore-counter-primary-mask.png'); mask-image:url('../images/lore-counter-primary-mask.png');"></div>
-            <div class="mask-layer region-secondary" style="background-color:#1a1a1a; -webkit-mask-image:url('../images/lore-counter-secondary-mask.png'); mask-image:url('../images/lore-counter-secondary-mask.png');"></div>
+            <svg class="photo-mask-svg" viewBox="0 0 800 800" aria-hidden="true">
+              <defs>
+                <mask id="lore-counter-primary-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="800" height="800">
+                  <image href="../images/lore-counter-primary-mask.png" x="0" y="0" width="800" height="800" />
+                </mask>
+                <mask id="lore-counter-secondary-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="800" height="800">
+                  <image href="../images/lore-counter-secondary-mask.png" x="0" y="0" width="800" height="800" />
+                </mask>
+              </defs>
+              <rect class="region-primary" x="0" y="0" width="800" height="800" fill="#8bc53f" mask="url(#lore-counter-primary-mask)" />
+              <rect class="region-secondary" x="0" y="0" width="800" height="800" fill="#1a1a1a" mask="url(#lore-counter-secondary-mask)" />
+            </svg>
             <img class="photo-shading" src="../images/lore-counter-shading.png" alt="Lorcana lore counter color preview">
           </div>
 
