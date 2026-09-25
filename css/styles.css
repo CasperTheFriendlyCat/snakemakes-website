@@ -10,14 +10,15 @@
 }
 
 :root {
-  --bg: #faf6ee;
+  --bg: #f6f6f1;
   --card-bg: #ffffff;
-  --text: #22281f;
-  --text-muted: #5c5a4f;
-  --heading: #1f4d3a;
-  --accent: #b98527;
-  --accent-dark: #8f6a1d;
-  --border: #e3ddd0;
+  --text: #1a1a1a;
+  --text-muted: #5c5c56;
+  --heading: #1a1a1a;
+  --accent: #8bc53f;
+  --accent-dark: #6fa32e;
+  --accent-text: #1a1a1a;
+  --border: #e2e2da;
   --max-width: 1100px;
   --radius: 10px;
   --font-heading: "Pirata One", "Georgia", serif;
@@ -150,7 +151,7 @@ nav.main-nav a:hover {
   padding: 0.65rem 1.3rem;
   border-radius: var(--radius);
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-text);
   text-decoration: none;
   font-weight: 700;
   border: none;
@@ -159,6 +160,7 @@ nav.main-nav a:hover {
 
 .btn:hover {
   background: var(--accent-dark);
+  color: #fff;
 }
 
 .btn-outline {
@@ -169,7 +171,7 @@ nav.main-nav a:hover {
 
 .btn-outline:hover {
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-text);
 }
 
 .btn-row {
@@ -263,6 +265,13 @@ nav.main-nav a:hover {
   justify-content: center;
   color: var(--text-muted);
   font-size: 0.9rem;
+  overflow: hidden;
+}
+
+.product-card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .product-card .card-body {
@@ -353,6 +362,7 @@ section {
 
 .configurator-preview.photo-stack {
   position: relative;
+  width: min(420px, 100%);
   aspect-ratio: 1 / 1;
 }
 
