@@ -2,8 +2,8 @@
   PRODUCT PAGE TEMPLATE (with color configurator)
   To add another two-color product: copy this file, update the title/meta/JSON-LD,
   swap the SVG shape for your product, and reuse the .color-configurator markup as-is.
-  The swatch colors below are PLACEHOLDERS — replace data-color/data-name with your
-  actual filament colors (and update the hex values to match).
+  Filament colors are defined once in js/filament-colors.js — edit that file to
+  add/remove/rename colors and every page using a .swatch-picker updates automatically.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -61,42 +61,20 @@
           <div class="configurator-preview">
             <!-- Placeholder vector preview. Swap for a real photo-based mask when available. -->
             <svg viewBox="0 0 200 200" aria-label="Lore counter color preview">
-              <circle class="region-secondary" cx="100" cy="100" r="95" data-color="#1a1a1a" fill="#1a1a1a" />
-              <circle class="region-primary" cx="100" cy="100" r="65" data-color="#d1362f" fill="#d1362f" />
+              <circle class="region-secondary" cx="100" cy="100" r="95" fill="#1a1a1a" />
+              <circle class="region-primary" cx="100" cy="100" r="65" fill="#e2231a" />
               <circle cx="100" cy="100" r="95" fill="none" stroke="#00000022" stroke-width="2" />
             </svg>
           </div>
 
-          <div class="swatch-picker" data-region="primary">
+          <div class="swatch-picker" data-palette="pla" data-region="primary" data-default="Red">
             <h4>Primary Colour: <span class="selected-color-name selected-primary">Red</span></h4>
-            <div class="swatches">
-              <button type="button" class="swatch" style="background:#1a1a1a" data-color="#1a1a1a" data-name="Black" aria-label="Black"></button>
-              <button type="button" class="swatch" style="background:#f5f5f5" data-color="#f5f5f5" data-name="White" aria-label="White"></button>
-              <button type="button" class="swatch selected" style="background:#d1362f" data-color="#d1362f" data-name="Red" aria-label="Red"></button>
-              <button type="button" class="swatch" style="background:#e07b28" data-color="#e07b28" data-name="Orange" aria-label="Orange"></button>
-              <button type="button" class="swatch" style="background:#e8c334" data-color="#e8c334" data-name="Yellow" aria-label="Yellow"></button>
-              <button type="button" class="swatch" style="background:#3f8f4f" data-color="#3f8f4f" data-name="Green" aria-label="Green"></button>
-              <button type="button" class="swatch" style="background:#2f6fbf" data-color="#2f6fbf" data-name="Blue" aria-label="Blue"></button>
-              <button type="button" class="swatch" style="background:#7a4fbf" data-color="#7a4fbf" data-name="Purple" aria-label="Purple"></button>
-              <button type="button" class="swatch" style="background:#d977a8" data-color="#d977a8" data-name="Pink" aria-label="Pink"></button>
-              <button type="button" class="swatch" style="background:#8c8c8c" data-color="#8c8c8c" data-name="Grey" aria-label="Grey"></button>
-            </div>
+            <div class="swatches"></div>
           </div>
 
-          <div class="swatch-picker" data-region="secondary">
+          <div class="swatch-picker" data-palette="pla" data-region="secondary" data-default="Black">
             <h4>Secondary Colour: <span class="selected-color-name selected-secondary">Black</span></h4>
-            <div class="swatches">
-              <button type="button" class="swatch selected" style="background:#1a1a1a" data-color="#1a1a1a" data-name="Black" aria-label="Black"></button>
-              <button type="button" class="swatch" style="background:#f5f5f5" data-color="#f5f5f5" data-name="White" aria-label="White"></button>
-              <button type="button" class="swatch" style="background:#d1362f" data-color="#d1362f" data-name="Red" aria-label="Red"></button>
-              <button type="button" class="swatch" style="background:#e07b28" data-color="#e07b28" data-name="Orange" aria-label="Orange"></button>
-              <button type="button" class="swatch" style="background:#e8c334" data-color="#e8c334" data-name="Yellow" aria-label="Yellow"></button>
-              <button type="button" class="swatch" style="background:#3f8f4f" data-color="#3f8f4f" data-name="Green" aria-label="Green"></button>
-              <button type="button" class="swatch" style="background:#2f6fbf" data-color="#2f6fbf" data-name="Blue" aria-label="Blue"></button>
-              <button type="button" class="swatch" style="background:#7a4fbf" data-color="#7a4fbf" data-name="Purple" aria-label="Purple"></button>
-              <button type="button" class="swatch" style="background:#d977a8" data-color="#d977a8" data-name="Pink" aria-label="Pink"></button>
-              <button type="button" class="swatch" style="background:#8c8c8c" data-color="#8c8c8c" data-name="Grey" aria-label="Grey"></button>
-            </div>
+            <div class="swatches"></div>
           </div>
         </div>
       </div>
@@ -123,6 +101,7 @@
     </div>
   </footer>
 
+  <script src="../js/filament-colors.js"></script>
   <script src="../js/product-options.js"></script>
 </body>
 </html>

@@ -1,18 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Color swatch pickers (primary/secondary live SVG preview)
-  document.querySelectorAll(".color-configurator").forEach((configurator) => {
-    configurator.querySelectorAll(".swatch-picker").forEach((picker) => {
-      const region = picker.dataset.region;
-      const target = configurator.querySelector(".region-" + region);
-      const label = configurator.querySelector(".selected-" + region);
-      picker.querySelectorAll(".swatch").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          if (target) target.style.fill = btn.dataset.color;
-          if (label) label.textContent = btn.dataset.name;
-          picker.querySelectorAll(".swatch").forEach((b) => b.classList.remove("selected"));
-          btn.classList.add("selected");
-        });
+  // Color swatch pickers — rendered from the shared FILAMENT_COLORS palette
+  // (js/filament-colors.js) so every page stays in sync with one color list.
+  document.querySelectorAll(".swatch-picker").forEach((picker) => {
+    const palette = FILAMENT_COLORS[picker.dataset.palette] || [];
+    const region = picker.dataset.region || "color";
+    const defaultName = picker.dataset.default;
+    const target = document.querySelector(".region-" + region);
+    const label = document.querySelector(".selected-" + region);
+    const container = picker.querySelector(".swatches");
+    if (!container) return;
+
+    palette.forEach((color) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "swatch" + (color.transparent ? " swatch-transparent" : "");
+      btn.style.background = color.transparent
+        ? `repeating-linear-gradient(45deg, ${color.hex} 0 4px, #ffffff 4px 8px)`
+        : color.hex;
+      btn.dataset.color = color.hex;
+      btn.dataset.name = color.name;
+      btn.setAttribute("aria-label", color.name);
+      if (color.name === defaultName) btn.classList.add("selected");
+
+      btn.addEventListener("click", () => {
+        if (target) {
+          target.style.fill = color.hex;
+          target.style.fillOpacity = color.transparent ? 0.45 : 1;
+        }
+        if (label) label.textContent = color.name;
+        container.querySelectorAll(".swatch").forEach((b) => b.classList.remove("selected"));
+        btn.classList.add("selected");
+        updateSelectionSummary();
       });
+
+      container.appendChild(btn);
     });
   });
 
@@ -27,6 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const parts = [];
     document.querySelectorAll(".option-selector select").forEach((select) => {
       parts.push(select.options[select.selectedIndex].text);
+    });
+    document.querySelectorAll(".swatch-picker .selected-color-name").forEach((el) => {
+      parts.push(el.textContent);
     });
     summary.textContent = "Selected: " + parts.join(", ") + " — mention this in your Etsy/eBay order.";
   }

@@ -380,9 +380,8 @@ section {
   box-shadow: 0 0 0 2px var(--card-bg), 0 0 0 4px var(--heading);
 }
 
-.swatch-static {
-  display: inline-block;
-  cursor: default;
+.swatch-transparent {
+  border-style: dashed;
 }
 
 .selected-color-name {

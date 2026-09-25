@@ -55,21 +55,9 @@
         <p class="price-note">See current price and shipping on Etsy or eBay.</p>
         <p>A set of 6 card dividers to help organise your Lorcana collection by set, colour, or type. Each set comes in a single solid colour &mdash; pick your favourite below.</p>
 
-        <div class="swatch-picker">
-          <h4>Available Colours</h4>
-          <!-- TODO: replace with your actual filament color list -->
-          <div class="swatches">
-            <span class="swatch swatch-static" style="background:#1a1a1a" title="Black"></span>
-            <span class="swatch swatch-static" style="background:#f5f5f5" title="White"></span>
-            <span class="swatch swatch-static" style="background:#d1362f" title="Red"></span>
-            <span class="swatch swatch-static" style="background:#e07b28" title="Orange"></span>
-            <span class="swatch swatch-static" style="background:#e8c334" title="Yellow"></span>
-            <span class="swatch swatch-static" style="background:#3f8f4f" title="Green"></span>
-            <span class="swatch swatch-static" style="background:#2f6fbf" title="Blue"></span>
-            <span class="swatch swatch-static" style="background:#7a4fbf" title="Purple"></span>
-            <span class="swatch swatch-static" style="background:#d977a8" title="Pink"></span>
-            <span class="swatch swatch-static" style="background:#8c8c8c" title="Grey"></span>
-          </div>
+        <div class="swatch-picker" data-palette="pla" data-region="color" data-default="Black">
+          <h4>Available Colours: <span class="selected-color-name selected-color">Black</span></h4>
+          <div class="swatches"></div>
         </div>
 
         <p class="material-note">Mention your preferred colour when you order on Etsy or eBay.</p>
@@ -90,5 +78,7 @@
     </div>
   </footer>
 
+  <script src="../js/filament-colors.js"></script>
+  <script src="../js/product-options.js"></script>
 </body>
 </html>
