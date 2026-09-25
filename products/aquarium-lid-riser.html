@@ -1,29 +1,23 @@
-<!--
-  PRODUCT PAGE TEMPLATE
-  To add a new product: copy this file, rename it (e.g. card-divider-set.html),
-  update the <title>/meta tags, the JSON-LD block below, the heading/description,
-  and the Etsy/eBay links. Then link to it from lorcana.html or fish-tank.html.
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lorcana Deck Box | SnakeMakes</title>
-  <meta name="description" content="3D printed Lorcana deck box, holds a full deck plus sleeves with a snap-fit lid. Made to order by SnakeMakes.">
-  <link rel="canonical" href="https://snakemakes.com/products/lorcana-deck-box.html">
-  <meta property="og:title" content="Lorcana Deck Box | SnakeMakes">
-  <meta property="og:description" content="3D printed Lorcana deck box, holds a full deck plus sleeves with a snap-fit lid.">
+  <title>Aquarium Lid Riser | SnakeMakes</title>
+  <meta name="description" content="3D printed aquarium lid risers in PETG, sized to your glass thickness and desired height. Made to order by SnakeMakes.">
+  <link rel="canonical" href="https://snakemakes.com/products/aquarium-lid-riser.html">
+  <meta property="og:title" content="Aquarium Lid Riser | SnakeMakes">
+  <meta property="og:description" content="3D printed aquarium lid risers in PETG, sized to your glass thickness and desired height.">
   <meta property="og:type" content="product">
-  <meta property="og:url" content="https://snakemakes.com/products/lorcana-deck-box.html">
+  <meta property="og:url" content="https://snakemakes.com/products/aquarium-lid-riser.html">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="stylesheet" href="../css/styles.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org/",
     "@type": "Product",
-    "name": "Lorcana Deck Box",
-    "description": "3D printed Lorcana deck box, holds a full deck plus sleeves with a snap-fit lid.",
+    "name": "Aquarium Lid Riser",
+    "description": "3D printed aquarium lid riser in PETG, available in multiple pack sizes, glass thicknesses, and heights.",
     "brand": {
       "@type": "Brand",
       "name": "SnakeMakes"
@@ -57,9 +51,43 @@
     <div class="product-detail">
       <div class="thumb-large">Photo coming soon</div>
       <div>
-        <h1>Lorcana Deck Box</h1>
+        <h1>Aquarium Lid Riser</h1>
         <p class="price-note">See current price and shipping on Etsy or eBay.</p>
-        <p>A snap-fit deck box sized to hold a full 60-card Lorcana deck plus sleeves. Printed to order in your choice of colour.</p>
+        <p>Raises your aquarium lid to make room for filter pipes, CO2 lines, floating plants, or extra headspace. Choose your pack size, glass thickness, and riser height below.</p>
+
+        <div class="option-selector">
+          <label for="pack-size">Pack Size</label>
+          <select id="pack-size">
+            <option>4-Pack</option>
+            <option>6-Pack</option>
+            <option>8-Pack</option>
+          </select>
+        </div>
+
+        <div class="option-selector">
+          <label for="glass-thickness">Glass Thickness</label>
+          <select id="glass-thickness">
+            <option>4mm</option>
+            <option>6mm</option>
+            <option>8mm</option>
+            <option>10mm</option>
+          </select>
+        </div>
+
+        <div class="option-selector">
+          <label for="riser-height">Height Above Tank</label>
+          <select id="riser-height">
+            <option>10mm</option>
+            <option>20mm</option>
+            <option>30mm</option>
+            <option>40mm</option>
+            <option>50mm</option>
+          </select>
+        </div>
+
+        <p class="selection-summary">Selected: 4-Pack, 4mm, 10mm — mention this in your Etsy/eBay order.</p>
+
+        <p class="material-note">Printed in PETG.</p>
         <div class="btn-row">
           <!-- TODO: replace # with the real Etsy listing URL -->
           <a href="#" class="btn">Buy on Etsy</a>
@@ -77,5 +105,6 @@
     </div>
   </footer>
 
+  <script src="../js/product-options.js"></script>
 </body>
 </html>

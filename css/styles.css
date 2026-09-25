@@ -339,6 +339,115 @@ section {
   margin: 1.5rem 0;
 }
 
+/* ---------- Color configurator ---------- */
+
+.configurator-preview {
+  width: 220px;
+  margin: 0 auto 1.5rem;
+}
+
+.configurator-preview svg {
+  width: 100%;
+  height: auto;
+}
+
+.swatch-picker {
+  margin-bottom: 1.25rem;
+}
+
+.swatch-picker h4 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  padding: 0;
+}
+
+.swatch.selected {
+  border-color: var(--heading);
+  box-shadow: 0 0 0 2px var(--card-bg), 0 0 0 4px var(--heading);
+}
+
+.swatch-static {
+  display: inline-block;
+  cursor: default;
+}
+
+.selected-color-name {
+  font-weight: 600;
+}
+
+/* ---------- Option selectors (pack size, dimensions, etc.) ---------- */
+
+.option-selector {
+  margin-bottom: 1.25rem;
+}
+
+.option-selector label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.option-selector select {
+  width: 100%;
+  max-width: 280px;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background: #fff;
+}
+
+.selection-summary {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+.add-on-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  font-weight: 600;
+}
+
+.add-on-toggle input {
+  width: 18px;
+  height: 18px;
+}
+
+.add-on-note {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  display: none;
+}
+
+.add-on-note.visible {
+  display: block;
+}
+
+.material-note {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {

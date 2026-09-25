@@ -1,0 +1,132 @@
+<!--
+  PRODUCT PAGE TEMPLATE (with color configurator + add-on toggle)
+  Placeholder swatch colors — replace data-color/data-name with your actual filament colors.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lorcana Ink Drop Token | SnakeMakes</title>
+  <meta name="description" content="3D printed Lorcana ink drop token, choose your own primary and secondary colours, with an optional dispenser tube. Made to order by SnakeMakes.">
+  <link rel="canonical" href="https://snakemakes.com/products/lorcana-ink-drop-token.html">
+  <meta property="og:title" content="Lorcana Ink Drop Token | SnakeMakes">
+  <meta property="og:description" content="3D printed Lorcana ink drop token, choose your own primary and secondary colours.">
+  <meta property="og:type" content="product">
+  <meta property="og:url" content="https://snakemakes.com/products/lorcana-ink-drop-token.html">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Lorcana Ink Drop Token",
+    "description": "3D printed Lorcana ink drop token with customisable primary and secondary colours, optional dispenser tube.",
+    "brand": {
+      "@type": "Brand",
+      "name": "SnakeMakes"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="logo">SnakeMakes</a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../lorcana.html">Lorcana Accessories</a></li>
+          <li><a href="../fish-tank.html">Fish Tank Accessories</a></li>
+          <li><a href="../about.html">About</a></li>
+          <!-- TODO: replace # with your real Etsy shop URL once live -->
+          <li><a href="#" class="btn btn-small">Shop on Etsy</a></li>
+          <!-- TODO: replace # with your real eBay shop URL once live -->
+          <li><a href="#" class="btn btn-outline btn-small">Shop on eBay</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="product-detail">
+      <div>
+        <div class="color-configurator">
+          <div class="configurator-preview">
+            <!-- Placeholder vector preview. Swap for a real photo-based mask when available. -->
+            <svg viewBox="0 0 200 220" aria-label="Ink drop token color preview">
+              <path class="region-primary" data-color="#2f6fbf" fill="#2f6fbf"
+                d="M100,15 C145,80 175,125 175,155 C175,190 141,210 100,210 C59,210 25,190 25,155 C25,125 55,80 100,15 Z" />
+              <ellipse class="region-secondary" data-color="#f5f5f5" fill="#f5f5f5" cx="82" cy="90" rx="16" ry="22" opacity="0.85" />
+            </svg>
+          </div>
+
+          <div class="swatch-picker" data-region="primary">
+            <h4>Primary Colour: <span class="selected-color-name selected-primary">Blue</span></h4>
+            <div class="swatches">
+              <button type="button" class="swatch" style="background:#1a1a1a" data-color="#1a1a1a" data-name="Black" aria-label="Black"></button>
+              <button type="button" class="swatch" style="background:#f5f5f5" data-color="#f5f5f5" data-name="White" aria-label="White"></button>
+              <button type="button" class="swatch" style="background:#d1362f" data-color="#d1362f" data-name="Red" aria-label="Red"></button>
+              <button type="button" class="swatch" style="background:#e07b28" data-color="#e07b28" data-name="Orange" aria-label="Orange"></button>
+              <button type="button" class="swatch" style="background:#e8c334" data-color="#e8c334" data-name="Yellow" aria-label="Yellow"></button>
+              <button type="button" class="swatch" style="background:#3f8f4f" data-color="#3f8f4f" data-name="Green" aria-label="Green"></button>
+              <button type="button" class="swatch selected" style="background:#2f6fbf" data-color="#2f6fbf" data-name="Blue" aria-label="Blue"></button>
+              <button type="button" class="swatch" style="background:#7a4fbf" data-color="#7a4fbf" data-name="Purple" aria-label="Purple"></button>
+              <button type="button" class="swatch" style="background:#d977a8" data-color="#d977a8" data-name="Pink" aria-label="Pink"></button>
+              <button type="button" class="swatch" style="background:#8c8c8c" data-color="#8c8c8c" data-name="Grey" aria-label="Grey"></button>
+            </div>
+          </div>
+
+          <div class="swatch-picker" data-region="secondary">
+            <h4>Secondary Colour: <span class="selected-color-name selected-secondary">White</span></h4>
+            <div class="swatches">
+              <button type="button" class="swatch" style="background:#1a1a1a" data-color="#1a1a1a" data-name="Black" aria-label="Black"></button>
+              <button type="button" class="swatch selected" style="background:#f5f5f5" data-color="#f5f5f5" data-name="White" aria-label="White"></button>
+              <button type="button" class="swatch" style="background:#d1362f" data-color="#d1362f" data-name="Red" aria-label="Red"></button>
+              <button type="button" class="swatch" style="background:#e07b28" data-color="#e07b28" data-name="Orange" aria-label="Orange"></button>
+              <button type="button" class="swatch" style="background:#e8c334" data-color="#e8c334" data-name="Yellow" aria-label="Yellow"></button>
+              <button type="button" class="swatch" style="background:#3f8f4f" data-color="#3f8f4f" data-name="Green" aria-label="Green"></button>
+              <button type="button" class="swatch" style="background:#2f6fbf" data-color="#2f6fbf" data-name="Blue" aria-label="Blue"></button>
+              <button type="button" class="swatch" style="background:#7a4fbf" data-color="#7a4fbf" data-name="Purple" aria-label="Purple"></button>
+              <button type="button" class="swatch" style="background:#d977a8" data-color="#d977a8" data-name="Pink" aria-label="Pink"></button>
+              <button type="button" class="swatch" style="background:#8c8c8c" data-color="#8c8c8c" data-name="Grey" aria-label="Grey"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h1>Lorcana Ink Drop Token</h1>
+        <p class="price-note">See current price and shipping on Etsy or eBay.</p>
+        <p>A 3D printed ink token shaped like a drop of ink, for tracking your ink total during Lorcana games. Pick your primary and secondary colours above to preview your combination.</p>
+
+        <label class="add-on-toggle">
+          <input type="checkbox" data-note="dispenser-note">
+          Add a tube / dispenser
+        </label>
+        <p class="add-on-note dispenser-note">Great &mdash; mention that you'd like the tube/dispenser add-on when you order on Etsy or eBay.</p>
+
+        <p class="material-note">Printed to order &mdash; colours shown are an approximation of the final print.</p>
+        <div class="btn-row">
+          <!-- TODO: replace # with the real Etsy listing URL -->
+          <a href="#" class="btn">Buy on Etsy</a>
+          <!-- TODO: replace # with the real eBay listing URL -->
+          <a href="#" class="btn btn-outline">Buy on eBay</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>SnakeMakes &mdash; 3D printed accessories, made to order.</p>
+      <p><a href="../about.html">About</a> &middot; <a href="#">Etsy</a> &middot; <a href="#">eBay</a></p>
+    </div>
+  </footer>
+
+  <script src="../js/product-options.js"></script>
+</body>
+</html>
