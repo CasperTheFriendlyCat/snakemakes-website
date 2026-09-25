@@ -351,6 +351,43 @@ section {
   height: auto;
 }
 
+.configurator-preview.photo-stack {
+  position: relative;
+  aspect-ratio: 1 / 1;
+}
+
+.mask-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.photo-stack .region-primary {
+  z-index: 1;
+}
+
+.photo-stack .region-secondary {
+  z-index: 2;
+}
+
+.photo-stack .photo-shading {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  object-fit: contain;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
 .swatch-picker {
   margin-bottom: 1.25rem;
 }

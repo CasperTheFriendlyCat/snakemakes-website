@@ -24,8 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       btn.addEventListener("click", () => {
         if (target) {
-          target.style.fill = color.hex;
-          target.style.fillOpacity = color.transparent ? 0.45 : 1;
+          if (target instanceof SVGElement) {
+            target.style.fill = color.hex;
+            target.style.fillOpacity = color.transparent ? 0.45 : 1;
+          } else {
+            target.style.backgroundColor = color.hex;
+            target.style.opacity = color.transparent ? 0.45 : 1;
+          }
         }
         if (label) label.textContent = color.name;
         container.querySelectorAll(".swatch").forEach((b) => b.classList.remove("selected"));

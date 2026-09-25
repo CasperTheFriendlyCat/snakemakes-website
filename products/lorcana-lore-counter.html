@@ -43,7 +43,6 @@
         <ul>
           <li><a href="../index.html">Home</a></li>
           <li><a href="../lorcana.html">Lorcana Accessories</a></li>
-          <li><a href="../fish-tank.html">Fish Tank Accessories</a></li>
           <li><a href="../about.html">About</a></li>
           <!-- TODO: replace # with your real Etsy shop URL once live -->
           <li><a href="#" class="btn btn-small">Shop on Etsy</a></li>
@@ -58,17 +57,14 @@
     <div class="product-detail">
       <div>
         <div class="color-configurator">
-          <div class="configurator-preview">
-            <!-- Placeholder vector preview. Swap for a real photo-based mask when available. -->
-            <svg viewBox="0 0 200 200" aria-label="Lore counter color preview">
-              <circle class="region-secondary" cx="100" cy="100" r="95" fill="#1a1a1a" />
-              <circle class="region-primary" cx="100" cy="100" r="65" fill="#e2231a" />
-              <circle cx="100" cy="100" r="95" fill="none" stroke="#00000022" stroke-width="2" />
-            </svg>
+          <div class="configurator-preview photo-stack">
+            <div class="mask-layer region-primary" style="background-color:#8bc53f; -webkit-mask-image:url('../images/lore-counter-primary-mask.png'); mask-image:url('../images/lore-counter-primary-mask.png');"></div>
+            <div class="mask-layer region-secondary" style="background-color:#1a1a1a; -webkit-mask-image:url('../images/lore-counter-secondary-mask.png'); mask-image:url('../images/lore-counter-secondary-mask.png');"></div>
+            <img class="photo-shading" src="../images/lore-counter-shading.png" alt="Lorcana lore counter color preview">
           </div>
 
-          <div class="swatch-picker" data-palette="pla" data-region="primary" data-default="Red">
-            <h4>Primary Colour: <span class="selected-color-name selected-primary">Red</span></h4>
+          <div class="swatch-picker" data-palette="pla" data-region="primary" data-default="Lime Green">
+            <h4>Primary Colour: <span class="selected-color-name selected-primary">Lime Green</span></h4>
             <div class="swatches"></div>
           </div>
 
