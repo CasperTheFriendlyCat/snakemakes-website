@@ -289,6 +289,12 @@ nav.main-nav a:hover {
   font-size: 0.95rem;
 }
 
+.product-card .card-body .price {
+  color: var(--heading);
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
 .product-card.coming-soon {
   opacity: 0.6;
   cursor: default;
