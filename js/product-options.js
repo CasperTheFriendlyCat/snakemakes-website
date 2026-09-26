@@ -86,9 +86,17 @@ document.addEventListener("DOMContentLoaded", () => {
     select.addEventListener("change", updateSelectionSummary);
   });
 
-  function updateSelectionSummary() {
-    const summary = document.querySelector(".selection-summary");
-    if (!summary) return;
+  // Add-on toggle (e.g. dispenser tube) also feeds into the selection summary
+  // and the Stripe reference below, so mark it as a "part" when checked.
+  document.querySelectorAll(".add-on-toggle input").forEach((checkbox) => {
+    const note = document.querySelector("." + checkbox.dataset.note);
+    checkbox.addEventListener("change", () => {
+      if (note) note.classList.toggle("visible", checkbox.checked);
+      updateSelectionSummary();
+    });
+  });
+
+  function currentSelectionParts() {
     const parts = [];
     document.querySelectorAll(".option-selector select").forEach((select) => {
       parts.push(select.options[select.selectedIndex].text);
@@ -96,14 +104,51 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".swatch-picker .selected-color-name").forEach((el) => {
       parts.push(el.textContent);
     });
-    summary.textContent = "Selected: " + parts.join(", ") + " — mention this in your Etsy/eBay order.";
+    document.querySelectorAll(".add-on-toggle input:checked").forEach((checkbox) => {
+      parts.push(checkbox.parentElement.textContent.trim());
+    });
+    return parts;
   }
 
-  // Add-on toggle (e.g. dispenser tube) shows/hides a note
-  document.querySelectorAll(".add-on-toggle input").forEach((checkbox) => {
-    const note = document.querySelector("." + checkbox.dataset.note);
-    checkbox.addEventListener("change", () => {
-      if (note) note.classList.toggle("visible", checkbox.checked);
-    });
-  });
+  function updateSelectionSummary() {
+    const parts = currentSelectionParts();
+    const selectionText = parts.join(", ");
+
+    const summary = document.querySelector(".selection-summary");
+    if (summary) {
+      summary.textContent = "Selected: " + selectionText + " — mention this in your Etsy/eBay order.";
+    }
+
+    updateStripeBuyLink(selectionText);
+  }
+
+  // "Buy with Card" (Stripe Payment Link) support.
+  // Add data-payment-link="https://buy.stripe.com/xxxx" to a .stripe-buy-btn
+  // once you've created a Payment Link for that product in the Stripe
+  // dashboard. Until a real link is present the button stays visibly
+  // disabled so nobody can click a dead "#" link.
+  //
+  // Stripe Payment Links don't support prefilling custom dashboard fields
+  // from a URL (that needs a server-side Checkout Session), but they DO
+  // support a "client_reference_id" query param, which shows up against the
+  // payment in your Stripe dashboard/webhooks. We use it to carry the
+  // customer's exact colour/option picks through automatically, so they
+  // don't have to retype them anywhere.
+  function updateStripeBuyLink(selectionText) {
+    const btn = document.querySelector(".stripe-buy-btn");
+    if (!btn) return;
+    const base = btn.dataset.paymentLink;
+    if (!base) {
+      btn.classList.add("btn-pending");
+      btn.setAttribute("aria-disabled", "true");
+      return;
+    }
+    btn.classList.remove("btn-pending");
+    btn.removeAttribute("aria-disabled");
+    const separator = base.includes("?") ? "&" : "?";
+    const reference = selectionText || "Standard";
+    btn.href = base + separator + "client_reference_id=" + encodeURIComponent(reference);
+  }
+
+  updateSelectionSummary();
 });
