@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Add-on toggle (e.g. dispenser tube) also feeds into the selection summary
-  // and the Stripe reference below, so mark it as a "part" when checked.
+  // and the Snipcart cart fields below, so mark it as a "part" when checked.
   document.querySelectorAll(".add-on-toggle input").forEach((checkbox) => {
     const note = document.querySelector("." + checkbox.dataset.note);
     checkbox.addEventListener("change", () => {
@@ -119,35 +119,49 @@ document.addEventListener("DOMContentLoaded", () => {
       summary.textContent = "Selected: " + selectionText + " — mention this in your Etsy/eBay order.";
     }
 
-    updateStripeBuyLink(selectionText);
+    updateCartItemFields();
   }
 
-  // "Buy with Card" (Stripe Payment Link) support.
-  // Add data-payment-link="https://buy.stripe.com/xxxx" to a .stripe-buy-btn
-  // once you've created a Payment Link for that product in the Stripe
-  // dashboard. Until a real link is present the button stays visibly
-  // disabled so nobody can click a dead "#" link.
-  //
-  // Stripe Payment Links don't support prefilling custom dashboard fields
-  // from a URL (that needs a server-side Checkout Session), but they DO
-  // support a "client_reference_id" query param, which shows up against the
-  // payment in your Stripe dashboard/webhooks. We use it to carry the
-  // customer's exact colour/option picks through automatically, so they
-  // don't have to retype them anywhere.
-  function updateStripeBuyLink(selectionText) {
-    const btn = document.querySelector(".stripe-buy-btn");
+  // Snipcart "Add to Cart" support.
+  // A product page's .snipcart-add-item button carries the fixed
+  // id/name/price/url/image as static data-item-* attributes in the HTML.
+  // Here we additionally sync the customer's live colour/dropdown/add-on
+  // picks into Snipcart's data-item-customN-name/value pairs (it supports
+  // up to 5 per item), so whatever they chose shows up as line-item detail
+  // in the cart, checkout, and your Snipcart order dashboard — no retyping
+  // needed on their end.
+  function updateCartItemFields() {
+    const btn = document.querySelector(".snipcart-add-item");
     if (!btn) return;
-    const base = btn.dataset.paymentLink;
-    if (!base) {
-      btn.classList.add("btn-pending");
-      btn.setAttribute("aria-disabled", "true");
-      return;
-    }
-    btn.classList.remove("btn-pending");
-    btn.removeAttribute("aria-disabled");
-    const separator = base.includes("?") ? "&" : "?";
-    const reference = selectionText || "Standard";
-    btn.href = base + separator + "client_reference_id=" + encodeURIComponent(reference);
+
+    let n = 1;
+    const setField = (name, value) => {
+      if (n > 5 || !name || !value) return;
+      btn.dataset["itemCustom" + n + "Name"] = name;
+      btn.dataset["itemCustom" + n + "Value"] = value;
+      n++;
+    };
+
+    document.querySelectorAll(".option-selector").forEach((selector) => {
+      const label = selector.querySelector("label");
+      const select = selector.querySelector("select");
+      if (label && select) {
+        setField(label.textContent.trim(), select.options[select.selectedIndex].text);
+      }
+    });
+
+    document.querySelectorAll(".swatch-picker").forEach((picker) => {
+      const h4 = picker.querySelector("h4");
+      const valueEl = picker.querySelector(".selected-color-name");
+      if (!h4 || !valueEl) return;
+      const firstNode = h4.childNodes[0];
+      const labelText = (firstNode ? firstNode.textContent : "Colour").replace(/:\s*$/, "").trim();
+      setField(labelText, valueEl.textContent);
+    });
+
+    document.querySelectorAll(".add-on-toggle input:checked").forEach((checkbox) => {
+      setField(checkbox.parentElement.textContent.trim(), "Yes");
+    });
   }
 
   updateSelectionSummary();

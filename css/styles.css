@@ -181,11 +181,6 @@ nav.main-nav a:hover {
   flex-wrap: wrap;
 }
 
-.btn-pending {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
 .btn-small {
   padding: 0.4rem 0.9rem;
   font-size: 0.9rem;
