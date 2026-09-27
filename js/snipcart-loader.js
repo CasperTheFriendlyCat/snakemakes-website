@@ -1,7 +1,7 @@
 // Snipcart's official async loader (v3 install snippet from docs.snipcart.com).
 // Reads window.SnipcartSettings (set inline on each page, right before this
 // script tag) and injects the Snipcart script/CSS/cart container on demand.
-// Do not hand-edit the logic below — replace wholesale from Snipcart's docs
+// Do not hand-edit the logic below - replace wholesale from Snipcart's docs
 // if they ever update the install snippet.
 (function () {
   var c, d;

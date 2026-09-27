@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Color swatch pickers — rendered from the shared FILAMENT_COLORS palette
+  // Color swatch pickers - rendered from the shared FILAMENT_COLORS palette
   // (js/filament-colors.js) so every page stays in sync with one color list.
   // regionPickers tracks each picker's swatch container + current selection so
   // paired regions (e.g. primary/secondary) can stop the same color being picked twice.
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const summary = document.querySelector(".selection-summary");
     if (summary) {
-      summary.textContent = "Selected: " + selectionText + " — mention this in your Etsy/eBay order.";
+      summary.textContent = "Selected: " + selectionText + " - mention this in your Etsy/eBay order.";
     }
 
     updateCartItemFields();
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Here we additionally sync the customer's live colour/dropdown/add-on
   // picks into Snipcart's data-item-customN-name/value pairs (it supports
   // up to 5 per item), so whatever they chose shows up as line-item detail
-  // in the cart, checkout, and your Snipcart order dashboard — no retyping
+  // in the cart, checkout, and your Snipcart order dashboard - no retyping
   // needed on their end.
   function updateCartItemFields() {
     const btn = document.querySelector(".snipcart-add-item");
