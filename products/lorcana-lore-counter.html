@@ -52,7 +52,7 @@
           <li><a href="../about.html">About</a></li>
           <li><a href="https://www.etsy.com/uk/shop/SnakeMakesStudio" class="btn btn-small" target="_blank" rel="noopener">Shop on Etsy</a></li>
           <li><a href="https://www.ebay.co.uk/sch/i.html?item=298698951909&rt=nc&_trksid=p4429486.m3561.l161211&_ssn=snakemakes" class="btn btn-outline btn-small" target="_blank" rel="noopener">Shop on eBay</a></li>
-          <!-- Cart trigger hidden until Snipcart account/API key is set up: <li><button type="button" class="snipcart-checkout btn btn-small" aria-label="View cart">Cart (<span class="snipcart-items-count">0</span>)</button></li> -->
+          <li><button type="button" class="snipcart-checkout btn btn-small" aria-label="View cart">Cart (<span class="snipcart-items-count">0</span>)</button></li>
         </ul>
       </nav>
     </div>
@@ -100,11 +100,10 @@
           <a href="https://www.etsy.com/uk/shop/SnakeMakesStudio" class="btn" target="_blank" rel="noopener">Buy on Etsy</a>
           <!-- TODO: replace with the real eBay *listing* URL for this product once it's live -->
           <a href="https://www.ebay.co.uk/sch/i.html?item=298698951909&rt=nc&_trksid=p4429486.m3561.l161211&_ssn=snakemakes" class="btn btn-outline" target="_blank" rel="noopener">Buy on eBay</a>
-          <!-- Add to Cart hidden until Snipcart account/API key is set up.
-               When re-enabled: Snipcart handles checkout (incl. card payment via
-               Stripe) and lets customers combine this with other products in one
-               cart/transaction. Colour selections above are synced into the
-               custom fields below automatically by js/product-options.js.
+          <!-- Snipcart handles checkout (incl. card payment via Stripe) and lets
+               customers combine this with other products in one cart/transaction.
+               Colour selections above are synced into the custom fields below
+               automatically by js/product-options.js. -->
           <button type="button" class="btn btn-outline snipcart-add-item"
             data-item-id="lorcana-lore-counter"
             data-item-name="Lorcana Lore Counter"
@@ -113,7 +112,6 @@
             data-item-image="/images/lore-counter-photo.jpg">
             Add to Cart
           </button>
-          -->
         </div>
       </div>
     </div>
@@ -128,15 +126,13 @@
 
   <script src="../js/filament-colors.js"></script>
   <script src="../js/product-options.js"></script>
-  <!-- Snipcart hidden until a real API key is set up.
   <script>
     window.SnipcartSettings = {
-      publicApiKey: "YOUR_SNIPCART_PUBLIC_API_KEY",
+      publicApiKey: "OWE5OGYxNzAtOTRhMi00MmUzLTk1OTItODJhY2RkMGU3NGNhNjM5MjYwOTcyMjg2ODA2NDg4",
       loadStrategy: "on-user-interaction"
     };
   </script>
   <script src="../js/snipcart-loader.js"></script>
-  -->
 
 </body>
 </html>
