@@ -206,6 +206,7 @@ nav.main-nav a:hover {
   min-height: 260px;
   text-decoration: none;
   color: var(--text);
+  background: var(--card-bg);
 }
 
 .category-banner-text {
@@ -236,7 +237,7 @@ nav.main-nav a:hover {
   background-color: var(--accent);
   background-size: cover;
   background-position: center;
-  clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 12% 100%);
 }
 
 @media (max-width: 700px) {
