@@ -139,6 +139,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (n > 5 || !name || !value) return;
       btn.dataset["itemCustom" + n + "Name"] = name;
       btn.dataset["itemCustom" + n + "Value"] = value;
+      // Readonly: these reflect choices already made on the page, not
+      // free text the customer should be able to retype in the cart.
+      btn.dataset["itemCustom" + n + "Type"] = "readonly";
       n++;
     };
 
