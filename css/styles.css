@@ -247,8 +247,10 @@ nav.main-nav a:hover {
   }
 
   .category-banner-image {
+    order: -1;
     clip-path: none;
-    aspect-ratio: 16 / 9;
+    flex: none;
+    height: clamp(70px, 22vw, 120px);
   }
 
   .category-banner-text {
