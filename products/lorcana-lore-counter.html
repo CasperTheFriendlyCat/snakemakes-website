@@ -90,23 +90,25 @@
 
       <div>
         <h1>Lorcana Lore Counter</h1>
-        <p class="price-note"><strong>&pound;5.99</strong></p>
+        <div class="price-row">
+          <p class="price-note"><strong>&pound;5.99</strong></p>
+          <div class="btn-row">
+            <!-- Snipcart handles checkout (incl. card payment via Stripe) and lets
+                 customers combine this with other products in one cart/transaction.
+                 Colour selections above are synced into the custom fields below
+                 automatically by js/product-options.js. -->
+            <button type="button" class="btn btn-outline snipcart-add-item"
+              data-item-id="lorcana-lore-counter"
+              data-item-name="Lorcana Lore Counter"
+              data-item-price="5.99"
+              data-item-url="/products/lorcana-lore-counter.html"
+              data-item-image="/images/lore-counter-cart-reference.jpg">
+              Add to Cart
+            </button>
+          </div>
+        </div>
         <p class="product-description">A 3D printed lore counter for tracking your lore total during Lorcana games. Pick your primary and secondary colours above to preview your combination, then add it to your cart.</p>
         <p class="material-note">Printed to order - colours shown are an approximation of the final print.</p>
-        <div class="btn-row">
-          <!-- Snipcart handles checkout (incl. card payment via Stripe) and lets
-               customers combine this with other products in one cart/transaction.
-               Colour selections above are synced into the custom fields below
-               automatically by js/product-options.js. -->
-          <button type="button" class="btn btn-outline snipcart-add-item"
-            data-item-id="lorcana-lore-counter"
-            data-item-name="Lorcana Lore Counter"
-            data-item-price="5.99"
-            data-item-url="/products/lorcana-lore-counter.html"
-            data-item-image="/images/lore-counter-cart-reference.jpg">
-            Add to Cart
-          </button>
-        </div>
       </div>
     </div>
   </main>

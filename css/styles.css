@@ -336,6 +336,7 @@ nav.main-nav a:hover {
   .product-detail {
     display: flex;
     flex-direction: column;
+    gap: 1.25rem;
   }
 
   /* Unwrap the desktop column wrappers so every piece becomes an
@@ -343,6 +344,19 @@ nav.main-nav a:hover {
   .product-detail > div:not(.thumb-large),
   .color-configurator {
     display: contents;
+  }
+
+  /* The gap above controls spacing now -- flex items don't collapse
+     margins like normal block content does, so leaving these in place
+     would stack on top of the gap and double up the space between
+     paragraphs. */
+  .product-detail h1,
+  .product-detail p,
+  .product-detail .swatch-picker,
+  .product-detail .option-selector,
+  .product-detail .add-on-toggle,
+  .product-detail .price-row {
+    margin: 0;
   }
 
   .product-detail h1 {
@@ -359,7 +373,7 @@ nav.main-nav a:hover {
     order: 3;
   }
 
-  .price-note {
+  .price-row {
     order: 4;
   }
 
@@ -370,8 +384,7 @@ nav.main-nav a:hover {
   .add-on-toggle,
   .add-on-note,
   .selection-summary,
-  .material-note,
-  .btn-row {
+  .material-note {
     order: 6;
   }
 }
@@ -385,6 +398,18 @@ nav.main-nav a:hover {
   align-items: center;
   justify-content: center;
   color: var(--text-muted);
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.price-row .price-note {
+  margin-bottom: 0;
 }
 
 .price-note {
