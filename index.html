@@ -25,8 +25,6 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="lorcana.html">Lorcana Accessories</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="https://www.etsy.com/uk/shop/SnakeMakesStudio" class="btn btn-small" target="_blank" rel="noopener">Shop on Etsy</a></li>
-          <li><a href="https://www.ebay.co.uk/sch/i.html?item=298698951909&rt=nc&_trksid=p4429486.m3561.l161211&_ssn=snakemakes" class="btn btn-outline btn-small" target="_blank" rel="noopener">Shop on eBay</a></li>
           <li><button type="button" class="snipcart-checkout btn btn-small" aria-label="View cart">Cart (<span class="snipcart-items-count">0</span>)</button></li>
         </ul>
       </nav>
@@ -36,22 +34,18 @@
   <main>
     <section class="hero container">
       <h1>Handmade 3D prints</h1>
-      <p class="tagline">Browse the range below, then order through Etsy or eBay.</p>
-      <div class="btn-row" style="justify-content:center;">
-        <a href="https://www.etsy.com/uk/shop/SnakeMakesStudio" class="btn" target="_blank" rel="noopener">Shop on Etsy</a>
-        <a href="https://www.ebay.co.uk/sch/i.html?item=298698951909&rt=nc&_trksid=p4429486.m3561.l161211&_ssn=snakemakes" class="btn btn-outline" target="_blank" rel="noopener">Shop on eBay</a>
-      </div>
     </section>
 
-    <section class="container">
-      <h2 style="text-align:center;">What I make</h2>
-      <div class="category-grid">
-        <a href="lorcana.html" class="category-tile">
+    <div class="category-banners">
+      <a href="lorcana.html" class="category-banner">
+        <div class="category-banner-text">
           <h2>Lorcana TCG Accessories</h2>
           <p>Lore Counters, Card Dividers and Ink Drop Tokens.</p>
-        </a>
-      </div>
-    </section>
+        </div>
+        <!-- Defaults to a solid colour until images/categories/lorcana.jpg exists -->
+        <div class="category-banner-image" style="background-image:url('images/categories/lorcana.jpg')"></div>
+      </a>
+    </div>
   </main>
 
   <footer class="site-footer">
