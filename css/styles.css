@@ -334,7 +334,45 @@ nav.main-nav a:hover {
 
 @media (max-width: 700px) {
   .product-detail {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Unwrap the desktop column wrappers so every piece becomes an
+     orderable flex item, regardless of which column it started in. */
+  .product-detail > div:not(.thumb-large),
+  .color-configurator {
+    display: contents;
+  }
+
+  .product-detail h1 {
+    order: 1;
+  }
+
+  .product-detail .thumb-large,
+  .configurator-preview {
+    order: 2;
+  }
+
+  .swatch-picker,
+  .option-selector {
+    order: 3;
+  }
+
+  .price-note {
+    order: 4;
+  }
+
+  .product-description {
+    order: 5;
+  }
+
+  .add-on-toggle,
+  .add-on-note,
+  .selection-summary,
+  .material-note,
+  .btn-row {
+    order: 6;
   }
 }
 

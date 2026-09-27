@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const summary = document.querySelector(".selection-summary");
     if (summary) {
-      summary.textContent = "Selected: " + selectionText + " - mention this in your Etsy/eBay order.";
+      summary.textContent = "Selected: " + selectionText + ".";
     }
 
     updateCartItemFields();
