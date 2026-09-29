@@ -253,6 +253,37 @@
   }
   .wallBar .left { display: flex; align-items: baseline; gap: 14px; }
   .count { font-family: var(--display); color: var(--gold); letter-spacing: .15em; font-size: 14px; }
+
+  /* ---------- Mobile: stack the two panels instead of a fixed side-by-side
+     dashboard (the 420px-minimum left column just doesn't fit a phone). ---------- */
+  @media (max-width: 860px) {
+    html, body { height: auto; min-height: 100%; }
+    body {
+      grid-template-columns: 1fr;
+      overflow: visible;
+      overflow-y: auto;
+    }
+    #left {
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+    #wheelBox { min-height: 300px; }
+    .editor { grid-template-columns: 1fr; }
+    #right {
+      height: 70vh;
+      min-height: 480px;
+    }
+    .wallBar { flex-wrap: wrap; row-gap: 8px; }
+    .wallBar .hint { display: none; }
+
+    /* The board's fixed --boardW ate nearly the whole width at phone size --
+       stack portraits above the chalkboard instead of side by side. */
+    #wallInner { inset: 16px 16px 32% 16px; }
+    #board {
+      top: auto; left: 16px; right: 16px; bottom: 12px;
+      width: auto; height: 30%;
+    }
+  }
 </style>
 </head>
 <body>
