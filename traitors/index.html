@@ -269,20 +269,43 @@
     }
     #wheelBox { min-height: 300px; }
     .editor { grid-template-columns: 1fr; }
-    #right {
-      height: 70vh;
-      min-height: 480px;
+
+    /* The board's fixed --boardW ate nearly the whole width at phone size,
+       and (before this) both panels were squeezed into a fixed-height box
+       with the pairings list scrolling *inside* it. Instead: portraits get
+       one fixed-height area (still laid out by the same JS grid), and the
+       chalkboard becomes a normal block below it that grows with however
+       many pairs exist -- the page scrolls, nothing scrolls internally. */
+    #right { height: auto; }
+    #wall {
+      flex: none;
+      height: auto;
+      overflow: visible;
     }
+    #wallInner {
+      position: relative;
+      inset: auto;
+      height: 55vh;
+      min-height: 340px;
+      margin: 16px;
+    }
+    #board {
+      position: static;
+      width: auto;
+      height: auto;
+      margin: 0 16px 16px;
+    }
+    #board .slate { flex: none; }
+    #pairs { flex: none; max-height: none; overflow-y: visible; }
+    #banish {
+      position: fixed;
+      left: 50%; bottom: 20px;
+    }
+
     .wallBar { flex-wrap: wrap; row-gap: 8px; }
     .wallBar .hint { display: none; }
-
-    /* The board's fixed --boardW ate nearly the whole width at phone size --
-       stack portraits above the chalkboard instead of side by side. */
-    #wallInner { inset: 16px 16px 32% 16px; }
-    #board {
-      top: auto; left: 16px; right: 16px; bottom: 12px;
-      width: auto; height: 30%;
-    }
+    .wallActions { flex-wrap: wrap; justify-content: flex-end; row-gap: 8px; }
+    .wallBar button.primary { padding: 10px 18px; font-size: 14px; }
   }
 </style>
 </head>
@@ -349,7 +372,7 @@
       <span class="count" id="remaining"></span>
       <span class="hint">Right-click a portrait to cross it out or restore it by hand.</span>
     </div>
-    <div style="display:flex; gap:10px">
+    <div class="wallActions" style="display:flex; gap:10px">
       <button id="exportBtn" title="Save the chalkboard as an image and copy it to the clipboard">Export board</button>
       <button id="resetWall">Reset wall</button>
       <button class="primary" id="spotBtn">Spotlight</button>
