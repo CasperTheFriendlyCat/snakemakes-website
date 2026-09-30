@@ -119,7 +119,34 @@ document.addEventListener("DOMContentLoaded", () => {
       summary.textContent = "Selected: " + selectionText + ".";
     }
 
+    updatePriceFromSelector();
     updateCartItemFields();
+  }
+
+  // Some products price by a single option (e.g. pack size) rather than a
+  // flat price. Mark that option-selector with a JSON data-price-map of
+  // "option text" -> "price", and this keeps the visible price and the
+  // Snipcart button's price in sync with whatever's currently selected.
+  function updatePriceFromSelector() {
+    const priceSelector = document.querySelector(".option-selector[data-price-map]");
+    if (!priceSelector) return;
+    const select = priceSelector.querySelector("select");
+    if (!select) return;
+
+    let map;
+    try {
+      map = JSON.parse(priceSelector.dataset.priceMap);
+    } catch (e) {
+      return;
+    }
+    const price = map[select.options[select.selectedIndex].text];
+    if (price == null) return;
+
+    const btn = document.querySelector(".snipcart-add-item");
+    if (btn) btn.dataset.itemPrice = price;
+
+    const priceDisplay = document.querySelector("[data-price-display]");
+    if (priceDisplay) priceDisplay.textContent = "£" + price;
   }
 
   // Snipcart "Add to Cart" support.

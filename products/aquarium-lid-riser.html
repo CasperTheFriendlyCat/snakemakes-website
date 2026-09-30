@@ -21,6 +21,14 @@
     "brand": {
       "@type": "Brand",
       "name": "SnakeMakes"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "GBP",
+      "lowPrice": "6.00",
+      "highPrice": "10.00",
+      "offerCount": 3,
+      "availability": "https://schema.org/InStock"
     }
   }
   </script>
@@ -60,14 +68,20 @@
       <div>
         <h1>Aquarium Lid Riser</h1>
         <div class="price-row">
-          <p class="price-note">Price available on request.</p>
+          <p class="price-note"><strong data-price-display>&pound;6.00</strong></p>
           <div class="btn-row">
-            <!-- TODO: once this product has a fixed price, add a Snipcart "Add to Cart" button here -- see products/lorcana-lore-counter.html for the pattern -->
+            <button type="button" class="btn btn-outline snipcart-add-item"
+              data-item-id="aquarium-lid-riser"
+              data-item-name="Aquarium Lid Riser"
+              data-item-price="6.00"
+              data-item-url="/products/aquarium-lid-riser.html">
+              Add to Cart
+            </button>
           </div>
         </div>
         <p class="product-description">Raises your aquarium lid to make room for filter pipes, CO2 lines, floating plants, or extra headspace. Choose your pack size, glass thickness, and riser height below.</p>
 
-        <div class="option-selector">
+        <div class="option-selector" data-price-map='{"4-Pack":"6.00","6-Pack":"8.00","8-Pack":"10.00"}'>
           <label for="pack-size">Pack Size</label>
           <select id="pack-size">
             <option>4-Pack</option>
@@ -85,15 +99,14 @@
             <option>10mm</option>
           </select>
         </div>
+        <p class="tolerance-note">Please order your exact glass thickness - a clearance tolerance is already built into the fit.</p>
 
         <div class="option-selector">
           <label for="riser-height">Height Above Tank</label>
           <select id="riser-height">
-            <option>10mm</option>
-            <option>20mm</option>
-            <option>30mm</option>
-            <option>40mm</option>
-            <option>50mm</option>
+            <option>Standard (5mm)</option>
+            <option>Medium (12.5mm)</option>
+            <option>High (20mm)</option>
           </select>
         </div>
 
@@ -102,7 +115,7 @@
           <div class="swatches"></div>
         </div>
 
-        <p class="selection-summary">Selected: 4-Pack, 4mm, 10mm, Clear.</p>
+        <p class="selection-summary">Selected: 4-Pack, 4mm, Standard (5mm), Clear.</p>
 
         <p class="material-note">Printed in PETG.</p>
       </div>

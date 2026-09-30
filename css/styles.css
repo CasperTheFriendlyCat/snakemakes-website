@@ -483,7 +483,8 @@ nav.main-nav .sub-menu a {
   }
 
   .swatch-picker,
-  .option-selector {
+  .option-selector,
+  .tolerance-note {
     order: 3;
   }
 
@@ -688,7 +689,8 @@ section {
   display: block;
 }
 
-.material-note {
+.material-note,
+.tolerance-note {
   font-size: 0.9rem;
   color: var(--text-muted);
 }
