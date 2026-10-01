@@ -97,17 +97,12 @@ h3 { font-size: 1.4rem; }
   display: none;
 }
 
-/* Desktop order: logo -- nav links -- cart, matching the original layout. */
 nav.main-nav {
   order: 2;
 }
 
-.header-cart {
-  order: 3;
-}
-
 .nav-toggle-label {
-  order: 4;
+  order: 3;
   display: none;
   cursor: pointer;
   font-size: 1.6rem;
@@ -195,16 +190,6 @@ nav.main-nav .sub-menu a {
 @media (max-width: 700px) {
   .nav-toggle-label {
     display: block;
-  }
-
-  /* Mobile order: logo -- cart -- hamburger, with nav collapsing onto its
-     own full-width row below instead of hiding the cart button with it. */
-  .header-cart {
-    order: 2;
-  }
-
-  .nav-toggle-label {
-    order: 3;
   }
 
   nav.main-nav {

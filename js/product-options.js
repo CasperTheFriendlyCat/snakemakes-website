@@ -86,8 +86,8 @@ document.addEventListener("DOMContentLoaded", () => {
     select.addEventListener("change", updateSelectionSummary);
   });
 
-  // Add-on toggle (e.g. dispenser tube) also feeds into the selection summary
-  // and the Snipcart cart fields below, so mark it as a "part" when checked.
+  // Add-on toggle (e.g. dispenser tube) also feeds into the selection summary,
+  // so mark it as a "part" when checked.
   document.querySelectorAll(".add-on-toggle input").forEach((checkbox) => {
     const note = document.querySelector("." + checkbox.dataset.note);
     checkbox.addEventListener("change", () => {
@@ -116,17 +116,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const summary = document.querySelector(".selection-summary");
     if (summary) {
-      summary.textContent = "Selected: " + selectionText + ".";
+      summary.textContent = "Selected: " + selectionText + " - mention this in your Etsy/eBay order.";
     }
 
     updatePriceFromSelector();
-    updateCartItemFields();
   }
 
   // Some products price by a single option (e.g. pack size) rather than a
   // flat price. Mark that option-selector with a JSON data-price-map of
-  // "option text" -> "price", and this keeps the visible price and the
-  // Snipcart button's price in sync with whatever's currently selected.
+  // "option text" -> "price", and this keeps the visible price in sync
+  // with whatever's currently selected.
   function updatePriceFromSelector() {
     const priceSelector = document.querySelector(".option-selector[data-price-map]");
     if (!priceSelector) return;
@@ -142,56 +141,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const price = map[select.options[select.selectedIndex].text];
     if (price == null) return;
 
-    const btn = document.querySelector(".snipcart-add-item");
-    if (btn) btn.dataset.itemPrice = price;
-
     const priceDisplay = document.querySelector("[data-price-display]");
     if (priceDisplay) priceDisplay.textContent = "£" + price;
-  }
-
-  // Snipcart "Add to Cart" support.
-  // A product page's .snipcart-add-item button carries the fixed
-  // id/name/price/url/image as static data-item-* attributes in the HTML.
-  // Here we additionally sync the customer's live colour/dropdown/add-on
-  // picks into Snipcart's data-item-customN-name/value pairs (it supports
-  // up to 5 per item), so whatever they chose shows up as line-item detail
-  // in the cart, checkout, and your Snipcart order dashboard - no retyping
-  // needed on their end.
-  function updateCartItemFields() {
-    const btn = document.querySelector(".snipcart-add-item");
-    if (!btn) return;
-
-    let n = 1;
-    const setField = (name, value) => {
-      if (n > 5 || !name || !value) return;
-      btn.dataset["itemCustom" + n + "Name"] = name;
-      btn.dataset["itemCustom" + n + "Value"] = value;
-      // Readonly: these reflect choices already made on the page, not
-      // free text the customer should be able to retype in the cart.
-      btn.dataset["itemCustom" + n + "Type"] = "readonly";
-      n++;
-    };
-
-    document.querySelectorAll(".option-selector").forEach((selector) => {
-      const label = selector.querySelector("label");
-      const select = selector.querySelector("select");
-      if (label && select) {
-        setField(label.textContent.trim(), select.options[select.selectedIndex].text);
-      }
-    });
-
-    document.querySelectorAll(".swatch-picker").forEach((picker) => {
-      const h4 = picker.querySelector("h4");
-      const valueEl = picker.querySelector(".selected-color-name");
-      if (!h4 || !valueEl) return;
-      const firstNode = h4.childNodes[0];
-      const labelText = (firstNode ? firstNode.textContent : "Colour").replace(/:\s*$/, "").trim();
-      setField(labelText, valueEl.textContent);
-    });
-
-    document.querySelectorAll(".add-on-toggle input:checked").forEach((checkbox) => {
-      setField(checkbox.parentElement.textContent.trim(), "Yes");
-    });
   }
 
   updateSelectionSummary();
